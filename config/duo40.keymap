@@ -15,42 +15,57 @@
 #define CONTROL 3
 
 / {
+    macros {
+        macro1: macro1 {
+            compatible = "zmk,behavior-macro";
+            label = "macro1";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp D &kp A>;
+        };
+        macro2: macro2 {
+            compatible = "zmk,behavior-macro";
+            label = "macro2";
+            #binding-cells = <0>;
+            bindings = <&kp LS(J) &kp A &kp C &kp K &kp Y>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-   &kp ESC     &kp Q     &kp W   &kp E        &kp R   &kp T      &kp Y   &kp U      &kp I     &kp O      &kp P  &kp BSPC
- &lt 2 TAB     &kp A     &kp S   &kp D        &kp F   &kp G      &kp H   &kp J      &kp K     &kp L  &kp ENTER
- &kp LSHFT     &kp Z     &kp X   &kp C        &kp V   &kp B      &kp N   &kp M  &kp COMMA    &kp UP      &mo 2
- &kp LCTRL  &kp LALT  &kp LGUI          &lt 1 SPACE          &kp SPACE  &trans   &kp LEFT  &kp DOWN  &kp RIGHT
+  &kp ESC     &kp Q     &kp W  &kp E        &kp R  &kp T      &kp Y   &kp U      &kp I     &kp O      &kp P  &kp BSPC
+&lt 2 TAB     &kp A     &kp S  &kp D        &kp F  &kp G      &kp H   &kp J      &kp K     &kp L  &kp ENTER
+&kp LSHFT     &kp Z     &kp X  &kp C        &kp V  &kp B      &kp N   &kp M  &kp COMMA    &kp UP      &mo 2
+&kp LCTRL  &kp LALT  &kp LGUI         &lt 1 SPACE         &kp SPACE  &trans   &kp LEFT  &kp DOWN  &kp RIGHT
             >;
         };
 
         lower_layer {
             bindings = <
- &kp GRAVE  &kp NUMBER_1  &kp N2  &kp N3  &kp N4   &kp N5    &kp N6    &kp N7     &kp N8      &kp N9          &kp N0  &kp BACKSLASH
-    &trans        &kp F1  &kp F2  &kp F3  &kp F4   &kp F5  &kp LBKT  &kp RBKT  &kp MINUS   &kp EQUAL       &kp SLASH
-    &trans        &kp F6  &kp F7  &kp F8  &kp F9  &kp F10   &kp F11   &kp F12  &kp COMMA  &kp PERIOD          &trans
-    &trans        &trans  &trans          &trans             &trans    &trans     &trans      &trans  &kp APOSTROPHE
+&kp GRAVE  &kp NUMBER_1  &kp N2  &kp N3  &kp N4   &kp N5    &kp N6    &kp N7     &kp N8      &kp N9          &kp N0  &kp BACKSLASH
+   &trans        &kp F1  &kp F2  &kp F3  &kp F4   &kp F5  &kp LBKT  &kp RBKT  &kp MINUS   &kp EQUAL       &kp SLASH
+   &trans        &kp F6  &kp F7  &kp F8  &kp F9  &kp F10   &kp F11   &kp F12  &kp COMMA  &kp PERIOD          &trans
+   &trans        &trans  &trans          &trans             &trans    &trans     &trans      &trans  &kp APOSTROPHE
             >;
         };
 
         raise_layer {
             bindings = <
-  &kp TILDE     &kp EXCL   &kp AT  &kp HASH  &kp DLLR  &kp PRCNT       &kp CARET         &kp AMPS   &kp STAR  &kp LPAR           &kp RPAR  &kp PIPE
-     &trans    &kp PG_UP  &kp DEL    &trans    &trans     &trans  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp UNDER  &kp PLUS       &kp QUESTION
-     &trans    &kp PG_DN   &trans    &trans    &trans     &trans          &trans           &trans     &kp LT    &kp GT             &trans
- &bt BT_CLR  &bootloader   &trans              &trans                     &trans           &trans     &trans    &trans  &kp DOUBLE_QUOTES
+ &kp TILDE     &kp EXCL   &kp AT  &kp HASH  &kp DLLR  &kp PRCNT       &kp CARET         &kp AMPS   &kp STAR  &kp LPAR           &kp RPAR  &kp PIPE
+    &trans    &kp PG_UP  &macro1   &kp DEL    &trans     &trans  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp UNDER  &kp PLUS       &kp QUESTION
+    &trans    &kp PG_DN  &macro2    &trans    &trans     &trans          &trans           &trans     &kp LT    &kp GT             &trans
+&bt BT_CLR  &bootloader   &trans              &trans                     &trans           &trans     &trans    &trans  &kp DOUBLE_QUOTES
             >;
         };
 
         control_layer {
             bindings = <
-   &bt BT_CLR        &kp F1           &kp F2      &kp F3    &kp F4  &kp F5  &kp F6       &kp F7        &kp F8        &kp F9       &kp F10  &kp C_PP
- &bt BT_SEL 0       &kp F11          &kp F12      &trans    &trans  &trans  &trans       &trans        &trans        &trans    &kp K_LOCK
- &bt BT_SEL 1  &out OUT_USB         &kp CAPS  &kp KP_NUM  &kp SLCK  &trans  &trans    &kp COMMA       &kp DOT  &kp K_VOL_UP    &kp K_MUTE
- &bt BT_SEL 2  &out OUT_BLE  &kp PAUSE_BREAK                &reset          &trans  &bootloader  &kp C_BRI_DN  &kp K_VOL_DN  &kp C_BRI_UP
+  &bt BT_CLR        &kp F1           &kp F2      &kp F3    &kp F4  &kp F5  &kp F6       &kp F7        &kp F8        &kp F9       &kp F10  &kp C_PP
+&bt BT_SEL 0       &kp F11          &kp F12      &trans    &trans  &trans  &trans       &trans        &trans        &trans    &kp K_LOCK
+&bt BT_SEL 1  &out OUT_USB         &kp CAPS  &kp KP_NUM  &kp SLCK  &trans  &trans    &kp COMMA       &kp DOT  &kp K_VOL_UP    &kp K_MUTE
+&bt BT_SEL 2  &out OUT_BLE  &kp PAUSE_BREAK                &reset          &trans  &bootloader  &kp C_BRI_DN  &kp K_VOL_DN  &kp C_BRI_UP
             >;
         };
     };
