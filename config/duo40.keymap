@@ -5,8 +5,8 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
 
 #define DEFAULT 0
 #define LOWER   1
@@ -36,7 +36,7 @@
             bindings = <
   &kp ESC     &kp Q     &kp W  &kp E        &kp R  &kp T      &kp Y   &kp U      &kp I     &kp O      &kp P  &kp BSPC
 &lt 2 TAB     &kp A     &kp S  &kp D        &kp F  &kp G      &kp H   &kp J      &kp K     &kp L  &kp ENTER
-&kp LSHFT     &kp Z     &kp X  &kp C        &kp V  &kp B      &kp N   &kp M  &kp COMMA    &kp UP      &mo 2
+&kp LSHFT     &kp Z     &kp X  &kp C        &kp V  &kp B      &kp N   &kp M  &kp COMMA    &kp UP      &mo 3
 &kp LCTRL  &kp LALT  &kp LGUI         &lt 1 SPACE         &kp SPACE  &trans   &kp LEFT  &kp DOWN  &kp RIGHT
             >;
         };
@@ -56,6 +56,15 @@
     &trans    &kp PG_UP     &macro1   &kp DEL    &trans     &trans  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp UNDER   &kp PLUS       &kp QUESTION
     &trans    &kp PG_DN      &trans    &trans    &trans     &trans          &trans           &trans     &kp LT     &kp GT             &trans
 &bt BT_CLR  &bootloader  &sys_reset              &trans                     &trans           &trans     &trans  &kp COLON  &kp DOUBLE_QUOTES
+            >;
+        };
+
+        layer_3 {
+            bindings = <
+&trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &bt BT_NXT  &trans          &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
